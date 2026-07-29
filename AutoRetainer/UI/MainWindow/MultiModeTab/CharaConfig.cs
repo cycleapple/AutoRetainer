@@ -11,7 +11,7 @@ public class CharaConfig
         SharedUI.DrawMultiModeHeader(data);
         var b = new NuiBuilder()
 
-        .Section("General Character Specific Settings")
+        .Section("角色專屬的一般設定")
         .Widget(() =>
         {
             SharedUI.DrawServiceAccSelector(data);
@@ -19,9 +19,9 @@ public class CharaConfig
         });
         if(isRetainer)
         {
-            b = b.Section("Retainers").Widget(() =>
+            b = b.Section("雇員").Widget(() =>
             {
-                ImGuiEx.Text($"Automatic Grand Company Expert Delivery:");
+                ImGuiEx.Text($"自動籌備稀有品調度：");
                 if(!AutoGCHandin.Operation)
                 {
                     ImGuiEx.SetNextItemWidthScaled(200f);
@@ -29,34 +29,34 @@ public class CharaConfig
                 }
                 else
                 {
-                    ImGuiEx.Text($"Can't change this now");
+                    ImGuiEx.Text($"目前無法變更此設定");
                 }
             });
         }
         else
         {
-            b = b.Section("Deployables").Widget(() =>
+            b = b.Section("探索載具").Widget(() =>
             {
-                ImGui.Checkbox($"Wait For Voyage Completion", ref data.MultiWaitForAllDeployables);
-                ImGuiComponents.HelpMarker("""This setting works like the global option but applies to individual characters. When enabled, AutoRetainer will wait for all deployables to return before logging into the character. If you're already logged in for another reason, it will still resend completed submarines—unless the global setting "Wait even when already logged in" is also turned on.""");
+                ImGui.Checkbox($"等待探索完成", ref data.MultiWaitForAllDeployables);
+                ImGuiComponents.HelpMarker("""此設定與全域選項相同，但僅套用至個別角色。啟用後，AutoRetainer 會等待所有探索載具返回，再登入此角色。若因其他原因已登入此角色，仍會重新派遣已完成的潛水艇；除非全域設定中的「即使已登入也要等待」同時啟用。""");
             });
         }
-        b = b.Section("Teleport overrides", data.GetAreTeleportSettingsOverriden() ? ImGui.GetStyle().Colors[(int)ImGuiCol.FrameBg] with { X = 1f } : null, true)
+        b = b.Section("傳送覆寫", data.GetAreTeleportSettingsOverriden() ? ImGui.GetStyle().Colors[(int)ImGuiCol.FrameBg] with { X = 1f } : null, true)
         .Widget(() =>
         {
-            ImGuiEx.Text($"You can override teleport settings per character.");
+            ImGuiEx.Text($"可為每個角色個別覆寫傳送設定。");
             bool? demo = null;
-            ImGuiEx.Checkbox("Options marked with this marker will use values from global configuration", ref demo);
-            ImGuiEx.Checkbox("Enabled", ref data.TeleportOptionsOverride.Enabled);
+            ImGuiEx.Checkbox("標有此記號的選項會使用全域設定值", ref demo);
+            ImGuiEx.Checkbox("啟用", ref data.TeleportOptionsOverride.Enabled);
             ImGui.Indent();
-            ImGuiEx.Checkbox("Teleport for retainers...", ref data.TeleportOptionsOverride.Retainers);
+            ImGuiEx.Checkbox("為雇員進行傳送……", ref data.TeleportOptionsOverride.Retainers);
             ImGui.Indent();
-            ImGuiEx.Checkbox("...to private house", ref data.TeleportOptionsOverride.RetainersPrivate);
-            ImGuiEx.Checkbox("...to free company house", ref data.TeleportOptionsOverride.RetainersFC);
-            ImGuiEx.Checkbox("...to apartment", ref data.TeleportOptionsOverride.RetainersApartment);
-            ImGui.Text("If all above are disabled or fail, will be teleported to inn.");
+            ImGuiEx.Checkbox("……前往個人房屋", ref data.TeleportOptionsOverride.RetainersPrivate);
+            ImGuiEx.Checkbox("……前往公會房屋", ref data.TeleportOptionsOverride.RetainersFC);
+            ImGuiEx.Checkbox("……前往公寓", ref data.TeleportOptionsOverride.RetainersApartment);
+            ImGui.Text("若以上選項均停用或失敗，將傳送至旅館。");
             ImGui.Unindent();
-            ImGuiEx.Checkbox("Teleport to free company house for deployables", ref data.TeleportOptionsOverride.Deployables);
+            ImGuiEx.Checkbox("處理探索載具時傳送至公會房屋", ref data.TeleportOptionsOverride.Deployables);
             ImGui.Unindent(); 
         }).Draw();
         SharedUI.DrawExcludeReset(data);
