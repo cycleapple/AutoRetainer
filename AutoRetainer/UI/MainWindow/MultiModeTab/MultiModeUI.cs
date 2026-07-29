@@ -56,13 +56,13 @@ internal static unsafe class MultiModeUI
                 data.Enabled = !data.Enabled;
             }
             if(colen) ImGui.PopStyleColor();
-            ImGuiEx.Tooltip($"Enable multi-mode for this character");
+            ImGuiEx.Tooltip($"為此角色啟用多角色模式");
             ImGui.SameLine(0, 3);
             if(ImGuiEx.IconButton(FontAwesomeIcon.DoorOpen))
             {
                 if(MultiMode.Relog(data, out var error, RelogReason.ConfigGUI))
                 {
-                    Notify.Success("Relogging...");
+                    Notify.Success("正在重新登入……");
                 }
                 else
                 {
@@ -73,13 +73,13 @@ internal static unsafe class MultiModeUI
             {
                 Copy($"/ays relog {data.Name}@{data.World}");
             }
-            ImGuiEx.Tooltip($"Left click - relog to this character\nRight click - copy relog command into clipboard");
+            ImGuiEx.Tooltip($"左鍵：重新登入此角色\n右鍵：將重新登入指令複製到剪貼簿");
             ImGui.SameLine(0, 3);
             if(ImGuiEx.IconButton(FontAwesomeIcon.UserCog))
             {
                 ImGui.OpenPopup($"popup{data.CID}");
             }
-            ImGuiEx.Tooltip($"Configure Character");
+            ImGuiEx.Tooltip($"設定角色");
             ImGui.SameLine(0, 3);
 
             if(ImGui.BeginPopup($"popup{data.CID}"))
@@ -149,10 +149,10 @@ internal static unsafe class MultiModeUI
                 }
             }
             ImGui.SameLine(0, 0);
-            List<(bool, string)> texts = [(data.Ventures < C.UIWarningRetVentureNum, $"V: {data.Ventures}"), (data.InventorySpace < C.UIWarningRetSlotNum, $"I: {data.InventorySpace}")];
+            List<(bool, string)> texts = [(data.Ventures < C.UIWarningRetVentureNum, $"票：{data.Ventures}"), (data.InventorySpace < C.UIWarningRetSlotNum, $"欄：{data.InventorySpace}")];
             if(C.CharEqualize && MultiMode.Enabled)
             {
-                texts.Insert(0, (false, $"C: {MultiMode.CharaCnt.GetOrDefault(data.CID)}"));
+                texts.Insert(0, (false, $"次：{MultiMode.CharaCnt.GetOrDefault(data.CID)}"));
             }
             overlayTexts.Add((new Vector2(ImGui.GetContentRegionMax().X - ImGui.GetStyle().FramePadding.X, rCurPos.Y + ImGui.GetStyle().FramePadding.Y), [.. texts]));
             ImGui.NewLine();

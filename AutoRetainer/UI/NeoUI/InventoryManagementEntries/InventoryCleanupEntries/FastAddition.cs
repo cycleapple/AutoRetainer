@@ -6,7 +6,7 @@ using ECommons.WindowsFormsReflector;
 namespace AutoRetainer.UI.NeoUI.InventoryManagementEntries.InventoryCleanupEntries;
 public unsafe class FastAddition : InventoryManagementBase
 {
-    public override string Name { get; } = "Inventory Cleanup/Fast Addition and Removal";
+    public override string Name { get; } = "物品欄整理／快速新增與移除";
 
     private FastAddition()
     {
@@ -15,17 +15,17 @@ public unsafe class FastAddition : InventoryManagementBase
         .Widget(() =>
         {
             var selectedSettings = InventoryCleanupCommon.SelectedPlan;
-            ImGuiEx.TextWrapped(GradientColor.Get(EColor.RedBright, EColor.YellowBright), $"While this text is visible, hover over items while holding:");
-            ImGuiEx.Text(!ImGui.GetIO().KeyShift ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Shift - add to Quick Venture Sell List");
-            ImGuiEx.Text($"* Items that already in Unconditional Sell List or Discard List WILL NOT BE ADDED to Quick Venture Sell List");
-            ImGuiEx.Text(!ImGui.GetIO().KeyCtrl ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Ctrl - add to Unconditional Sell List");
-            ImGuiEx.Text($"* Items that already in other lists WILL BE MOVED to Unconditional Sell List");
-            ImGuiEx.Text(!IsKeyPressed(Keys.Tab) ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Tab - add to Discard List");
-            ImGuiEx.Text($"* Items that already in other lists WILL BE MOVED to Discard List");
+            ImGuiEx.TextWrapped(GradientColor.Get(EColor.RedBright, EColor.YellowBright), $"此文字顯示期間，將游標移至物品上並按住：");
+            ImGuiEx.Text(!ImGui.GetIO().KeyShift ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Shift－加入快速探險出售清單");
+            ImGuiEx.Text($"＊已在無條件出售或丟棄清單中的物品，不會加入快速探險出售清單");
+            ImGuiEx.Text(!ImGui.GetIO().KeyCtrl ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Ctrl－加入無條件出售清單");
+            ImGuiEx.Text($"＊已在其他清單中的物品會移至無條件出售清單");
+            ImGuiEx.Text(!IsKeyPressed(Keys.Tab) ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Tab－加入丟棄清單");
+            ImGuiEx.Text($"＊已在其他清單中的物品會移至丟棄清單");
             //ImGuiEx.Text(IsKeyPressed(Keys.Space) ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Space - add to Desynthesis List");
             //ImGuiEx.Text($"* Items that already in other lists WILL BE MOVED to Desynthesis List");
-            ImGuiEx.Text(!ImGui.GetIO().KeyAlt ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Alt - delete from any list");
-            ImGuiEx.Text("\nItems that are protected are unaffected by these actions");
+            ImGuiEx.Text(!ImGui.GetIO().KeyAlt ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Alt－從所有清單中移除");
+            ImGuiEx.Text("\n受保護的物品不受上述操作影響");
             if(Svc.GameGui.HoveredItem > 0)
             {
                 var id = (uint)(Svc.GameGui.HoveredItem % 1000000);
@@ -40,7 +40,7 @@ public unsafe class FastAddition : InventoryManagementBase
                     {
                         if(selectedSettings.AddItemToList(IMListKind.SoftSell, id, out var error))
                         {
-                            Notify.Success($"Added {ExcelItemHelper.GetName(id)} to Quick Venture Sell List");
+                            Notify.Success($"已將 {ExcelItemHelper.GetName(id)} 加入快速探險出售清單");
                         }
                         else
                         {
@@ -54,7 +54,7 @@ public unsafe class FastAddition : InventoryManagementBase
                     {
                         if(selectedSettings.AddItemToList(IMListKind.HardSell, id, out var error))
                         {
-                            Notify.Success($"Added {ExcelItemHelper.GetName(id)} to Unconditional Sell List");
+                            Notify.Success($"已將 {ExcelItemHelper.GetName(id)} 加入無條件出售清單");
                         }
                         else
                         {
@@ -68,7 +68,7 @@ public unsafe class FastAddition : InventoryManagementBase
                     {
                         if(selectedSettings.AddItemToList(IMListKind.Discard, id, out var error))
                         {
-                            Notify.Success($"Added {ExcelItemHelper.GetName(id)} to Discard List");
+                            Notify.Success($"已將 {ExcelItemHelper.GetName(id)} 加入丟棄清單");
                         }
                         else
                         {
@@ -92,10 +92,10 @@ public unsafe class FastAddition : InventoryManagementBase
                 }*/
                 if(ImGui.GetIO().KeyAlt)
                 {
-                    if(selectedSettings.IMAutoVendorSoft.Remove(id)) Notify.Info($"Removed {ExcelItemHelper.GetName(id)} from Quick Venture Sell List");
-                    if(selectedSettings.IMAutoVendorHard.Remove(id)) Notify.Info($"Removed {ExcelItemHelper.GetName(id)} from Unconditional Sell List");
-                    if(selectedSettings.IMDiscardList.Remove(id)) Notify.Info($"Removed {ExcelItemHelper.GetName(id)} from Discard List");
-                    if(selectedSettings.IMDesynth.Remove(id)) Notify.Info($"Removed {ExcelItemHelper.GetName(id)} from Desynthesis List");
+                    if(selectedSettings.IMAutoVendorSoft.Remove(id)) Notify.Info($"已從快速探險出售清單移除 {ExcelItemHelper.GetName(id)}");
+                    if(selectedSettings.IMAutoVendorHard.Remove(id)) Notify.Info($"已從無條件出售清單移除 {ExcelItemHelper.GetName(id)}");
+                    if(selectedSettings.IMDiscardList.Remove(id)) Notify.Info($"已從丟棄清單移除 {ExcelItemHelper.GetName(id)}");
+                    if(selectedSettings.IMDesynth.Remove(id)) Notify.Info($"已從分解清單移除 {ExcelItemHelper.GetName(id)}");
                 }
             }
         });

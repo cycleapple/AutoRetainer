@@ -10,17 +10,17 @@ public sealed unsafe class AccountWhitelist : NeoUIEntry
 {
     public override void Draw()
     {
-        ImGuiEx.TextWrapped($"You may setup account whitelist. In the event you will log in using non-whitelisted account, AutoRetainer will not record any characters, retainers, or submarines.");
+        ImGuiEx.TextWrapped($"可設定帳號白名單。使用不在白名單中的帳號登入時，AutoRetainer 不會記錄任何角色、雇員或潛水艇。");
         if(C.WhitelistedAccounts.Count == 0)
         {
-            ImGuiEx.TextWrapped(EColor.GreenBright, "Current whitelist status: Disabled. To enable, add some account to it.");
+            ImGuiEx.TextWrapped(EColor.GreenBright, "目前白名單狀態：已停用。新增帳號即可啟用。");
         }
         else
         {
-            ImGuiEx.TextWrapped(EColor.YellowBright, "Current whitelist status: Enabled. To disable, remove all accounts from it.");
+            ImGuiEx.TextWrapped(EColor.YellowBright, "目前白名單狀態：已啟用。移除所有帳號即可停用。");
         }
 
-        if(ImGuiEx.IconButtonWithText(FontAwesomeIcon.UserPlus, "Add current account", enabled: Player.Available))
+        if(ImGuiEx.IconButtonWithText(FontAwesomeIcon.UserPlus, "新增目前帳號", enabled: Player.Available))
         {
             C.WhitelistedAccounts.Add(*P.Memory.MyAccountId);
         }
@@ -33,7 +33,7 @@ public sealed unsafe class AccountWhitelist : NeoUIEntry
                 new TickScheduler(() => C.WhitelistedAccounts.Remove(x));
             }
             ImGui.SameLine();
-            ImGuiEx.TextV($"Account {x}");
+            ImGuiEx.TextV($"帳號 {x}");
             ImGui.PopID();
         }
     }

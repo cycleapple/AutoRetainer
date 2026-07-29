@@ -4,32 +4,32 @@ using ECommons.Reflection;
 namespace AutoRetainer.UI.NeoUI.AdvancedEntries;
 public class ExpertTab : NeoUIEntry
 {
-    public override string Path => "Advanced/Expert Settings";
+    public override string Path => "進階／專家設定";
 
     public override NuiBuilder Builder { get; init; } = new NuiBuilder()
-        .Section("Behavior")
-        .EnumComboFullWidth(null, "Action on accessing retainer bell if no ventures available:", () => ref C.OpenBellBehaviorNoVentures)
-        .EnumComboFullWidth(null, "Action on accessing retainer bell if any ventures available:", () => ref C.OpenBellBehaviorWithVentures)
-        .EnumComboFullWidth(null, "Task completion behavior after accessing bell:", () => ref C.TaskCompletedBehaviorAccess)
-        .EnumComboFullWidth(null, "Task completion behavior after manual enabling:", () => ref C.TaskCompletedBehaviorManual)
-        .EnumComboFullWidth(null, "Task completion behavior during plugin operation:", () => ref C.TaskCompletedBehaviorAuto)
-        .TextWrapped(ImGuiColors.DalamudGrey, "\"Close retainer list and disable plugin\" option for 3 previous settings is enforced during MultiMode operation.")
-        .Checkbox("Stay in retainer menu if there are retainers to finish ventures within 5 minutes or less", () => ref C.Stay5, "This option is enforced during MultiMode operation.")
-        .Checkbox($"Auto-disable plugin when closing retainer list", () => ref C.AutoDisable, "Only applies when you exit menu by yourself. Otherwise, settings above apply.")
-        .Checkbox($"Do not show plugin status icons", () => ref C.HideOverlayIcons)
-        .Checkbox($"Display multi mode type selector", () => ref C.DisplayMMType)
-        .Checkbox($"Display deployables checkbox in workshop", () => ref C.ShowDeployables)
-        .Checkbox("Enable bailout module", () => ref C.EnableBailout)
-        .InputInt(150f, "Timeout before AutoRetainer will attempt to unstuck, seconds", () => ref C.BailoutTimeout)
+        .Section("行為")
+        .EnumComboFullWidth(null, "沒有可領取委託時使用傳喚鈴的動作：", () => ref C.OpenBellBehaviorNoVentures)
+        .EnumComboFullWidth(null, "有可領取委託時使用傳喚鈴的動作：", () => ref C.OpenBellBehaviorWithVentures)
+        .EnumComboFullWidth(null, "使用傳喚鈴後的工作完成行為：", () => ref C.TaskCompletedBehaviorAccess)
+        .EnumComboFullWidth(null, "手動啟用後的工作完成行為：", () => ref C.TaskCompletedBehaviorManual)
+        .EnumComboFullWidth(null, "插件運作期間的工作完成行為：", () => ref C.TaskCompletedBehaviorAuto)
+        .TextWrapped(ImGuiColors.DalamudGrey, "多角色模式運作期間，前述三項設定會強制使用「關閉雇員清單並停用插件」。")
+        .Checkbox("若有雇員將在 5 分鐘內完成委託，則留在雇員選單", () => ref C.Stay5, "多角色模式運作期間會強制啟用此選項。")
+        .Checkbox($"關閉雇員清單時自動停用插件", () => ref C.AutoDisable, "僅在你自行離開選單時適用；其他情況會套用上方設定。")
+        .Checkbox($"不要顯示插件狀態圖示", () => ref C.HideOverlayIcons)
+        .Checkbox($"顯示多角色模式類型選擇器", () => ref C.DisplayMMType)
+        .Checkbox($"在地下工房顯示探索載具核取方塊", () => ref C.ShowDeployables)
+        .Checkbox("啟用防卡死模組", () => ref C.EnableBailout)
+        .InputInt(150f, "AutoRetainer 嘗試解除卡死前的逾時秒數", () => ref C.BailoutTimeout)
 
-        .Section("Settings")
-        .Checkbox($"Disable sorting and collapsing/expanding", () => ref C.NoCurrentCharaOnTop)
-        .Checkbox($"Show MultiMode checkbox on plugin UI bar", () => ref C.MultiModeUIBar)
-        .SliderIntAsFloat(100f, "Retainer menu delay, seconds", () => ref C.RetainerMenuDelay.ValidateRange(0, 2000), 0, 2000)
-        .Checkbox($"Allow venture timer to display negative values", () => ref C.TimerAllowNegative)
-        .Checkbox($"Do not error check venture planner", () => ref C.NoErrorCheckPlanner2)
-        .Checkbox("Enable Manual relogs character postprocess", () => ref C.AllowManualPostprocess, "Allow manual command invocation while AutoRetainer locked in postprocess. ")
-        .Widget("Market Cooldown Overlay", (x) =>
+        .Section("設定")
+        .Checkbox($"停用排序及摺疊／展開", () => ref C.NoCurrentCharaOnTop)
+        .Checkbox($"在插件介面列顯示多角色模式核取方塊", () => ref C.MultiModeUIBar)
+        .SliderIntAsFloat(100f, "雇員選單延遲（秒）", () => ref C.RetainerMenuDelay.ValidateRange(0, 2000), 0, 2000)
+        .Checkbox($"允許委託計時器顯示負值", () => ref C.TimerAllowNegative)
+        .Checkbox($"不要檢查委託規劃器錯誤", () => ref C.NoErrorCheckPlanner2)
+        .Checkbox("啟用手動重新登入的角色後續處理", () => ref C.AllowManualPostprocess, "AutoRetainer 鎖定於後續處理時，允許手動呼叫指令。")
+        .Widget("市場冷卻浮層", (x) =>
         {
             if(ImGui.Checkbox(x, ref C.MarketCooldownOverlay))
             {
@@ -44,14 +44,14 @@ public class ExpertTab : NeoUIEntry
             }
         })
 
-        .Section("Integrations")
-        .Checkbox($"Artisan integration", () => ref C.ArtisanIntegration, "Automatically enables AutoRetainer while Artisan is Pauses Artisan operation when ventures are ready to be collected and a retainer bell is within range. Once ventures have been dealt with Artisan will be enabled and resume whatever it was doing.")
+        .Section("整合")
+        .Checkbox($"Artisan 整合", () => ref C.ArtisanIntegration, "委託可領取且附近有傳喚鈴時，會暫停 Artisan 並自動啟用 AutoRetainer。處理完委託後會重新啟用 Artisan，繼續原本的工作。")
 
-        .Section("Server Time")
-        .Checkbox("Use server time instead of PC time", () => ref C.UseServerTime)
+        .Section("伺服器時間")
+        .Checkbox("使用伺服器時間而非電腦時間", () => ref C.UseServerTime)
 
-        .Section("Utility")
-        .Widget("Cleanup ghost retainers", (x) =>
+        .Section("工具")
+        .Widget("清理幽靈雇員", (x) =>
         {
             if(ImGui.Button(x))
             {
@@ -64,10 +64,10 @@ public class ExpertTab : NeoUIEntry
             }
         })
 
-        .Section("Import/Export")
+        .Section("匯入／匯出")
         .Widget(() =>
         {
-            if(ImGui.Button("Export without character data"))
+            if(ImGui.Button("匯出（不含角色資料）"))
             {
                 var clone = C.JSONClone();
                 clone.OfflineData = null;
@@ -78,7 +78,7 @@ public class ExpertTab : NeoUIEntry
                 clone.AutoLogin = "";
                 Copy(EzConfig.DefaultSerializationFactory.Serialize(clone, false));
             }
-            if(ImGui.Button("Import and merge with character data"))
+            if(ImGui.Button("匯入並與角色資料合併"))
             {
                 try
                 {

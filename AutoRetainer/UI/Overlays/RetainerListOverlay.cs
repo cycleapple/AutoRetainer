@@ -59,12 +59,12 @@ internal unsafe class RetainerListOverlay : Window
         if(disabled)
         {
             ImGui.EndDisabled();
-            ImGuiComponents.HelpMarker($"MultiMode controls this option. Hold CTRL to override.");
+                    ImGuiComponents.HelpMarker("此選項由多重模式控制。按住 CTRL 可暫時覆寫。");
         }
         if(P.WasEnabled)
         {
             ImGui.SameLine();
-            ImGuiEx.Text(GradientColor.Get(ImGuiColors.DalamudGrey, ImGuiColors.DalamudGrey3, 500), $"Paused");
+                    ImGuiEx.Text(GradientColor.Get(ImGuiColors.DalamudGrey, ImGuiColors.DalamudGrey3, 500), "已暫停");
         }
         if(C.MultiModeUIBar)
         {
@@ -87,7 +87,7 @@ internal unsafe class RetainerListOverlay : Window
         {
             Svc.Commands.ProcessCommand("/ays");
         }
-        ImGuiEx.Tooltip("Open Plugin Settings");
+            ImGuiEx.Tooltip("開啟插件設定");
         if(!P.TaskManager.IsBusy)
         {
             ImGui.SameLine();
@@ -112,13 +112,13 @@ internal unsafe class RetainerListOverlay : Window
                         }
                         else
                         {
-                            Notify.Error($"No entrust plan found for retainer {ret.Name}");
+                    Notify.Error($"找不到雇員 {ret.Name} 的委託計畫。");
                         }
 
                     }
                 }
             }
-            ImGuiEx.Tooltip("Quick Entrust");
+                ImGuiEx.Tooltip("快速委託");
 
             ImGui.SameLine();
             if(ImGuiEx.IconButton($"{Lang.IconGil}##WithdrawGil"))
@@ -139,7 +139,7 @@ internal unsafe class RetainerListOverlay : Window
                     }
                 }
             }
-            ImGuiEx.Tooltip("Quick Withdraw Gil");
+                ImGuiEx.Tooltip("快速提領金幣");
 
             {
                 ImGui.SameLine();
@@ -151,10 +151,10 @@ internal unsafe class RetainerListOverlay : Window
                 {
                     ImGui.OpenPopup("QuickVendorPopup");
                 }
-                ImGuiEx.Tooltip("Quick Vendor Items");
+                ImGuiEx.Tooltip("快速出售物品");
                 if(ImGui.BeginPopup("QuickVendorPopup"))
                 {
-                    if(ImGui.Selectable("Sell items from Quick Venture List"))
+                    if(ImGui.Selectable("出售快速探險清單中的物品"))
                     {
                         for(var i = 0; i < GameRetainerManager.Count; i++)
                         {

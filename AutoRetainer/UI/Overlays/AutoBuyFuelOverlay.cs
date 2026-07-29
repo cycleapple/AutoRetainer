@@ -21,7 +21,7 @@ public unsafe class AutoBuyFuelOverlay : Window
             {
                 Position = new(a->X, a->Y - Height);
             }
-            if(ImGuiEx.IconButtonWithText(FontAwesomeIcon.GasPump, "Recursively purchase Ceruleum Tanks", !Utils.IsBusy)) TaskRecursivelyBuyFuel.Enqueue();
+            if(ImGuiEx.IconButtonWithText(FontAwesomeIcon.GasPump, "持續購買青磷水缸", !Utils.IsBusy)) TaskRecursivelyBuyFuel.Enqueue();
         }
         Height = ImGui.GetWindowSize().Y;
     }

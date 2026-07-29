@@ -292,14 +292,14 @@ internal class MultiModeOverlay : Window
         ImGui.Dummy(Vector2.One);
         if(Data != null && !C.OldStatusIcons)
         {
-            ImGuiEx.LineCentered("Status", delegate
+        ImGuiEx.LineCentered("Status", delegate
             {
                 if(C.MultiModeWorkshopConfiguration.MultiWaitForAll)
                 {
                     if(ThreadLoadImageHandler.TryGetTextureWrap(Path.Combine(Svc.PluginInterface.AssemblyLocation.DirectoryName, "res", "wait.png"), out var t))
                     {
                         ImGui.Image(t.Handle, StatusPanelSize / 2);
-                        ImGuiEx.Tooltip("Wait for all deployables is globally enabled.");
+                ImGuiEx.Tooltip("已全域啟用等待所有探索載具歸航。");
                     }
                     else
                     {
@@ -312,7 +312,7 @@ internal class MultiModeOverlay : Window
                     if(ThreadLoadImageHandler.TryGetTextureWrap(Path.Combine(Svc.PluginInterface.AssemblyLocation.DirectoryName, "res", "wait.png"), out var t))
                     {
                         ImGui.Image(t.Handle, StatusPanelSize / 2);
-                        ImGuiEx.Tooltip("Wait for all deployables is enabled for this character.");
+                ImGuiEx.Tooltip("此角色已啟用等待所有探索載具歸航。");
                     }
                     else
                     {

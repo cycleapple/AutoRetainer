@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace AutoRetainer.UI.NeoUI.InventoryManagementEntries.InventoryCleanupEntries;
 public sealed unsafe class CleanupCharacterConfiguration : InventoryManagementBase
 {
-    public override string Name { get; } = "Inventory Cleanup/Character Configuration";
+    public override string Name { get; } = "物品欄整理／角色設定";
 
     public override int DisplayPriority => -20;
 
     public override void Draw()
     {
-        ImGuiEx.TextWrapped($"Here you can assign preconfigured inventory cleanup lists to your registered characters.");
+        ImGuiEx.TextWrapped($"可在此將預先設定的物品欄整理清單指派給已登錄角色。");
         ImGuiEx.SetNextItemFullWidth();
-        ImGuiEx.FilteringInputTextWithHint("##search", "Search...", out var filter);
-        if(ImGuiEx.BeginDefaultTable(["~Character", "Plan"]))
+        ImGuiEx.FilteringInputTextWithHint("##search", "搜尋……", out var filter);
+        if(ImGuiEx.BeginDefaultTable(["~角色", "計畫"]))
         {
             foreach(var characterData in C.OfflineData)
             {
@@ -28,9 +28,9 @@ public sealed unsafe class CleanupCharacterConfiguration : InventoryManagementBa
                 ImGui.TableNextColumn();
                 var plan = characterData.InventoryCleanupPlan == Guid.Empty ? null : C.AdditionalIMSettings.FirstOrDefault(p => p.GUID == characterData.InventoryCleanupPlan);
                 ImGui.SetNextItemWidth(200f);
-                if(ImGui.BeginCombo("##chPlan", plan?.DisplayName ?? "Default Plan", ImGuiComboFlags.HeightLarge))
+                if(ImGui.BeginCombo("##chPlan", plan?.DisplayName ?? "預設計畫", ImGuiComboFlags.HeightLarge))
                 {
-                    if(ImGui.Selectable("Default Plan", plan == null)) characterData.InventoryCleanupPlan = Guid.Empty;
+                    if(ImGui.Selectable("預設計畫", plan == null)) characterData.InventoryCleanupPlan = Guid.Empty;
                     ImGui.Separator();
                     foreach(var cleanupPlan in C.AdditionalIMSettings)
                     {
