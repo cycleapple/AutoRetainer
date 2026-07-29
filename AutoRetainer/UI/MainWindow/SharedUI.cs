@@ -46,7 +46,7 @@ internal static class SharedUI
 
     internal static void DrawPreferredCharacterUI(OfflineCharacterData data)
     {
-        if(ImGui.Checkbox("Preferred Character", ref data.Preferred))
+        if(ImGui.Checkbox("優先角色", ref data.Preferred))
         {
             foreach(var z in C.OfflineData)
             {

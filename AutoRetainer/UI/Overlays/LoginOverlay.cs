@@ -59,7 +59,7 @@ internal unsafe class LoginOverlay : Window
         //ImGui.PopFont();
         ImGuiEx.LineCentered("LoginCenter", delegate
         {
-            if(ImGui.Checkbox("Multi Mode", ref MultiMode.Enabled))
+            if(ImGui.Checkbox("多角色模式", ref MultiMode.Enabled))
             {
                 MultiMode.OnMultiModeEnabled();
             }

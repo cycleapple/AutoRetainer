@@ -44,7 +44,7 @@ internal unsafe class RetainerListOverlay : Window
         {
             ImGui.BeginDisabled();
         }
-        if(ImGui.Checkbox("Enable AutoRetainer", ref e))
+        if(ImGui.Checkbox("啟用 AutoRetainer", ref e))
         {
             P.WasEnabled = false;
             if(e)
@@ -69,7 +69,7 @@ internal unsafe class RetainerListOverlay : Window
         if(C.MultiModeUIBar)
         {
             ImGui.SameLine();
-            if(ImGui.Checkbox("MultiMode", ref MultiMode.Enabled))
+            if(ImGui.Checkbox("多角色模式", ref MultiMode.Enabled))
             {
                 MultiMode.OnMultiModeEnabled();
                 if(MultiMode.Active)
