@@ -101,7 +101,7 @@ public sealed class VentureStatsManager
         catch(Exception e)
         {
             e.Log();
-            Notify.Error($"Error: {e.Message}");
+            Notify.Error($"錯誤：{e.Message}");
         }
     }
 

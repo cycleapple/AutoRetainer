@@ -220,7 +220,7 @@ internal static unsafe class WorkshopUI
 
         if(C.Verbose)
         {
-            if(ImGui.CollapsingHeader("Public debug"))
+            if(ImGui.CollapsingHeader("公開測試工具"))
             {
                 try
                 {
@@ -230,23 +230,23 @@ internal static unsafe class WorkshopUI
                         {
                             TaskDeployOnPreviousVoyage.Enqueue();
                         }*/
-                        if(ImGui.Button("Select best path"))
+                        if(ImGui.Button("選擇最佳航線"))
                         {
                             TaskCalculateAndPickBestExpRoute.Enqueue();
                         }
-                        if(ImGui.Button("Select best path with 1 unlock included"))
+                        if(ImGui.Button("選擇包含 1 個解鎖點的最佳航線"))
                         {
                             TaskCalculateAndPickBestExpRoute.Enqueue(VoyageUtils.GetSubmarineUnlockPlanByGuid(Data.GetAdditionalVesselData(GenericHelpers.Read(CurrentSubmarine.Get()->Name), VoyageType.Submersible).SelectedUnlockPlan) ?? new());
                         }
-                        if(ImGui.Button("Select unlock path (up to 5)"))
+                        if(ImGui.Button("選擇解鎖航線（最多 5 點）"))
                         {
                             TaskDeployOnUnlockRoute.EnqueuePickOrCalc(VoyageUtils.GetSubmarineUnlockPlanByGuid(Data.GetAdditionalVesselData(GenericHelpers.Read(CurrentSubmarine.Get()->Name), VoyageType.Submersible).SelectedUnlockPlan) ?? new(), UnlockMode.MultiSelect);
                         }
-                        if(ImGui.Button("Select unlock path (only 1)"))
+                        if(ImGui.Button("選擇解鎖航線（僅 1 點）"))
                         {
                             TaskDeployOnUnlockRoute.EnqueuePickOrCalc(VoyageUtils.GetSubmarineUnlockPlanByGuid(Data.GetAdditionalVesselData(GenericHelpers.Read(CurrentSubmarine.Get()->Name), VoyageType.Submersible).SelectedUnlockPlan) ?? new(), UnlockMode.SpamOne);
                         }
-                        if(ImGui.Button("Select point planner path"))
+                        if(ImGui.Button("選擇航點規劃器航線"))
                         {
                             var plan = VoyageUtils.GetSubmarinePointPlanByGuid(Data.GetAdditionalVesselData(GenericHelpers.Read(CurrentSubmarine.Get()->Name), VoyageType.Submersible).SelectedPointPlan);
                             if(plan != null)
@@ -260,7 +260,7 @@ internal static unsafe class WorkshopUI
                         }
                         foreach(var x in Data.OfflineSubmarineData)
                         {
-                            if(ImGui.Button($"Repair {x.Name} submarine's broken components"))
+                            if(ImGui.Button($"修理潛水艇 {x.Name} 的損壞組件"))
                             {
                                 if(VoyageUtils.GetCurrentWorkshopPanelType() == PanelType.Submersible)
                                 {
@@ -270,16 +270,16 @@ internal static unsafe class WorkshopUI
                                 }
                                 else
                                 {
-                                    Notify.Error("You are not in a submersible menu");
+                                    Notify.Error("目前不在潛水艇選單中");
                                 }
                             }
                         }
-                        if(ImGui.Button("Approach bell"))
+                        if(ImGui.Button("靠近傳喚鈴"))
                         {
                             TaskInteractWithNearestBell.Enqueue(false);
                         }
 
-                        if(ImGui.Button("Approach panel"))
+                        if(ImGui.Button("靠近管制面板"))
                         {
                             TaskInteractWithNearestPanel.Enqueue(false);
                         }
@@ -294,7 +294,7 @@ internal static unsafe class WorkshopUI
                     }
                     else
                     {
-                        ImGuiEx.Text(EColor.RedBright, $"Currently executing: {P.TaskManager.CurrentTask?.Name}");
+                        ImGuiEx.Text(EColor.RedBright, $"目前正在執行：{P.TaskManager.CurrentTask?.Name}");
                     }
                 }
                 catch(Exception e)
@@ -574,10 +574,10 @@ internal static unsafe class WorkshopUI
             }
             if(C.Verbose)
             {
-                if(ImGui.Button("Fake ready")) vessel.ReturnTime = (uint)P.Time;
-                if(ImGui.Button("Fake ready+")) vessel.ReturnTime += 60u * (ImGui.GetIO().KeyCtrl ? 10u : 1u) * (ImGui.GetIO().KeyShift ? 10u : 1u);
-                if(ImGui.Button("Fake ready-")) vessel.ReturnTime -= 60u * (ImGui.GetIO().KeyCtrl ? 10u : 1u) * (ImGui.GetIO().KeyShift ? 10u : 1u);
-                if(ImGui.Button("Fake unready")) vessel.ReturnTime = (uint)(P.Time + 9999);
+                if(ImGui.Button("模擬完成")) vessel.ReturnTime = (uint)P.Time;
+                if(ImGui.Button("模擬完成＋")) vessel.ReturnTime += 60u * (ImGui.GetIO().KeyCtrl ? 10u : 1u) * (ImGui.GetIO().KeyShift ? 10u : 1u);
+                if(ImGui.Button("模擬完成－")) vessel.ReturnTime -= 60u * (ImGui.GetIO().KeyCtrl ? 10u : 1u) * (ImGui.GetIO().KeyShift ? 10u : 1u);
+                if(ImGui.Button("模擬未完成")) vessel.ReturnTime = (uint)(P.Time + 9999);
             }
             ImGui.EndPopup();
         }

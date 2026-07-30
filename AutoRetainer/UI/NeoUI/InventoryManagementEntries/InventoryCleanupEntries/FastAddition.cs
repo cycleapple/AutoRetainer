@@ -82,7 +82,7 @@ public unsafe class FastAddition : InventoryManagementBase
                     {
                         if(selectedSettings.AddItemToList(IMListKind.Desynth, id, out var error))
                         {
-                            Notify.Success($"Added {ExcelItemHelper.GetName(id)} to Desynthesis List");
+                            Notify.Success($"已將 {ExcelItemHelper.GetName(id)} 加入分解清單");
                         }
                         else
                         {

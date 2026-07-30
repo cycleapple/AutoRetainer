@@ -85,7 +85,7 @@ internal static unsafe class VoyageMain
                     //Notify.Info($"Entered voyage panel");
                     if(IsKeyPressed(C.Suppress))
                     {
-                        Notify.Warning("No operation was requested by user");
+                        Notify.Warning("使用者未要求任何操作");
                     }
                     else
                     {
@@ -98,7 +98,7 @@ internal static unsafe class VoyageMain
                             }
                             else
                             {
-                                Notify.Warning($"Warning!\nDeployables were not enabled as there are nothing to process yet");
+                                Notify.Warning("警告！\n目前沒有可處理的遠航探索，因此未啟用遠航探索功能");
                             }
                         }
                     }

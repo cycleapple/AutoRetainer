@@ -102,11 +102,11 @@ public static unsafe class RetainerConfig
         Svc.PluginInterface.GetIpcProvider<ulong, string, object>(ApiConsts.OnRetainerSettingsDraw).SendMessage(data.CID, ret.Name);
         if(C.Verbose)
         {
-            if(ImGui.Button("Fake ready"))
+            if(ImGui.Button("模擬完成"))
             {
                 ret.VentureEndsAt = 1;
             }
-            if(ImGui.Button("Fake unready"))
+            if(ImGui.Button("模擬未完成"))
             {
                 ret.VentureEndsAt = P.Time + 60 * 60;
             }

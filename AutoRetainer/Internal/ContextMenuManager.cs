@@ -44,7 +44,7 @@ internal unsafe class ContextMenuManager
                             }
                             else
                             {
-                                Notify.Error($"Hold both CTRL+SHIFT while clicking to remove protection from item");
+                                Notify.Error("按住 Ctrl＋Shift 並點擊，才能解除物品保護");
                             }
                         }
                     }.RemovePrefix());
@@ -60,7 +60,7 @@ internal unsafe class ContextMenuManager
                             OnClicked = (a) =>
                             {
                                 Data.GetIMSettings(true).IMAutoVendorSoft.Remove(id);
-                                Notify.Info($"Item {ExcelItemHelper.GetName(id)} removed from Quick Venture sell list");
+                                Notify.Info($"已從快速探險出售清單移除 {ExcelItemHelper.GetName(id)}");
                             }
                         }.RemovePrefix());
                     }
@@ -73,7 +73,7 @@ internal unsafe class ContextMenuManager
                             {
                                 if(Data.GetIMSettings(true).AddItemToList(IMListKind.SoftSell, id, out var error))
                                 {
-                                    Notify.Success($"Item {ExcelItemHelper.GetName(id)} added to Quick Venture sell list");
+                                    Notify.Success($"已將 {ExcelItemHelper.GetName(id)} 加入快速探險出售清單");
                                 }
                                 else
                                 {
@@ -91,7 +91,7 @@ internal unsafe class ContextMenuManager
                             OnClicked = (a) =>
                             {
                                 Data.GetIMSettings(true).IMAutoVendorHard.Remove(id);
-                                Notify.Success($"Item {ExcelItemHelper.GetName(id)} removed from Unconditional sell list");
+                                Notify.Success($"已從無條件出售清單移除 {ExcelItemHelper.GetName(id)}");
                             }
                         }.RemovePrefix());
                     }
@@ -104,7 +104,7 @@ internal unsafe class ContextMenuManager
                             {
                                 if(Data.GetIMSettings(true).AddItemToList(IMListKind.HardSell, id, out var error))
                                 {
-                                    Notify.Success($"Item {ExcelItemHelper.GetName(id)} added to Unconditional sell list");
+                                    Notify.Success($"已將 {ExcelItemHelper.GetName(id)} 加入無條件出售清單");
                                 }
                                 else
                                 {
@@ -122,7 +122,7 @@ internal unsafe class ContextMenuManager
                             OnClicked = (a) =>
                             {
                                 Data.GetIMSettings(true).IMDiscardList.Remove(id);
-                                Notify.Success($"Item {ExcelItemHelper.GetName(id)} removed from Discard list");
+                                Notify.Success($"已從丟棄清單移除 {ExcelItemHelper.GetName(id)}");
                             }
                         }.RemovePrefix());
                     }
@@ -135,7 +135,7 @@ internal unsafe class ContextMenuManager
                             {
                                 if(Data.GetIMSettings(true).AddItemToList(IMListKind.Discard, id, out var error))
                                 {
-                                    Notify.Success($"Item {ExcelItemHelper.GetName(id)} added to Discard list");
+                                    Notify.Success($"已將 {ExcelItemHelper.GetName(id)} 加入丟棄清單");
                                 }
                                 else
                                 {

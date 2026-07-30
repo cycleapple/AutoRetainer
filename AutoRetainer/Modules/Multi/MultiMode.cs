@@ -373,7 +373,7 @@ internal static unsafe class MultiMode
                 {
                     z.Preferred = false;
                 }
-                Notify.Warning("Preferred character has been reset");
+                Notify.Warning("已重設偏好角色");
             }
         }
         ErrorMessage = string.Empty;

@@ -24,8 +24,8 @@ internal static unsafe class VentureUtils
         {
             if(adata.VenturePlan.ListUnwrapped.Count > 500)
             {
-                ImGuiEx.Text($"The venture list is too large to show preview.");
-                ImGuiEx.Text($"Progress: {adata.VenturePlanIndex}/{adata.VenturePlan.ListUnwrapped.Count}");
+                ImGuiEx.Text("探險清單過長，無法顯示預覽。");
+                ImGuiEx.Text($"進度：{adata.VenturePlanIndex}/{adata.VenturePlan.ListUnwrapped.Count}");
                 return;
             }
             List<(Vector4? col, string str)> strings = [];

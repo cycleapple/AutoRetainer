@@ -29,7 +29,7 @@ internal unsafe class LoginOverlay : Window
             ImGuiEx.LineCentered(() =>
             {
                 ImGui.SetNextItemWidth(100f);
-                ImGui.InputTextWithHint("##search", "Search...", ref Search, 50);
+                ImGui.InputTextWithHint("##search", "搜尋……", ref Search, 50);
                 if(userServiceAccounts.Count() > 2)
                 {
                     ImGui.SameLine();
