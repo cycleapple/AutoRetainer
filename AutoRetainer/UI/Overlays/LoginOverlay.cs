@@ -34,7 +34,7 @@ internal unsafe class LoginOverlay : Window
                 {
                     ImGui.SameLine();
                     ImGui.SetNextItemWidth(100f);
-                    ImGuiEx.Combo("##sacc", ref Ref<int>.Get("ServAcc", -1), userServiceAccounts, names: userServiceAccounts.ToDictionary(x => x, x => x == -1 ? "All service accounts" : $"Service account {x + 1}"));
+                    ImGuiEx.Combo("##sacc", ref Ref<int>.Get("ServAcc", -1), userServiceAccounts, names: userServiceAccounts.ToDictionary(x => x, x => x == -1 ? "所有服務帳戶" : $"服務帳戶 {x + 1}"));
                 }
             });
         }
