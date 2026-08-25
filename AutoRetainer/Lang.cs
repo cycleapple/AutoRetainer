@@ -117,7 +117,7 @@ internal static class Lang
         "Schneller Streifzug (2 Wertmarken)",
         "Tâche improvisée (2 jetons)",
         "自由探索委托（需要2枚探险币）",
-        "自由探索委託（需要2枚探險幣）",
+        "自由尋寶委託（需要2枚探險幣）",
         "발굴수행 (필요한 집사 급료: 2개)",
     ];
 
