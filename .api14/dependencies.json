@@ -1,0 +1,56 @@
+[
+  {
+    "path": "AutoRetainerAPI",
+    "baseCommit": "804dd1c244a4d3cf8c60407fa43f016f6f189ae4",
+    "patch": "patches/dc1ce226682c02d5.patch",
+    "sha256": "bcc1a35501288389e96859611d07705fe14f4bc516c0b19636576056b40004ff"
+  },
+  {
+    "path": "ECommons",
+    "baseCommit": "636eb6855dadd58161c64cba809086e622bbfcd8",
+    "patch": "patches/e347001520b30beb.patch",
+    "sha256": "4fbd2a0a0791cc387fad5c1672b8f84d4fb8ff47b62a8abe802b96f677151367"
+  },
+  {
+    "path": "ECommons.FileWriter",
+    "baseCommit": "3509b662f4effb21cbad4166cfebf8ce98b1ebb5",
+    "patch": "patches/28ce085857331fb3.patch",
+    "sha256": "bacbfa1ad3ec3fc2ed1fdbd3fb0c99222c5cd12300df004753f8e14fda900be2"
+  },
+  {
+    "path": "FFXIVClientStructs",
+    "baseCommit": "937d4fd012ad378132f26b09690e685b1096dfc4",
+    "patch": "patches/db59c145327a52d7.patch",
+    "sha256": "0a3f92d5b0b31b9ae022afdb0b357adb027178966aa1dbfcc0d8e98d9ea36105"
+  },
+  {
+    "path": "NightmareUI",
+    "baseCommit": "75d7c01ebd2fe3e4207642f57319539617f667fa",
+    "patch": "patches/71c63842f9d729a9.patch",
+    "sha256": "4d65ff45ea7849404bbe264084477490d05c90295ceda4a4fabda5cdda44767c"
+  },
+  {
+    "path": "NightmareUI.OtterGuiWrapper",
+    "baseCommit": "e45c702b01ca0aef972024ebc7d19843c68a6ec2",
+    "patch": "patches/71832a9a572de965.patch",
+    "sha256": "8637f29af47a9adb66dd914373a53eea37aaa69698905c697ae662957099bbf6"
+  },
+  {
+    "path": "OtterGui",
+    "baseCommit": "9523b7ac725656b21fa98faef96962652e86e64f",
+    "patch": "patches/fa3971c4e08c8077.patch",
+    "sha256": "3cca454cae7e6b11447342ab2e4c7aaef4e252d6336c2215a9e2bcd11a12dcae"
+  },
+  {
+    "path": "PunishLib",
+    "baseCommit": "570b57b09f4f6d5978944d002a5a528b605e297e",
+    "patch": "patches/0b680675a0e45218.patch",
+    "sha256": "7bee84debcba2594f8f1d9c31f1dcf21974d2e9cc342b22b1719a5c5017e0119"
+  },
+  {
+    "path": "OtterGui/OtterGuiInternal",
+    "baseCommit": "49631aab5c267953f9d442546488ea3bfdf52fa7",
+    "patch": "patches/83d6c41b4082a781.patch",
+    "sha256": "9997cf5bc08788acb336cb58a8405138ba9a14a407dd295f4ccbd1bd4cafd5a1"
+  }
+]

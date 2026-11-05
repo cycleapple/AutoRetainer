@@ -1,4 +1,4 @@
-﻿{
+{
     "Author": "кайт машина (Puni.sh)",
     "Name": "AutoRetainer",
     "InternalName": "AutoRetainer",
@@ -6,7 +6,7 @@
     "Description": "自動領取雇員探險成果、重新指派探險，並管理探索載具。",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/PunishXIV/AutoRetainer",
-    "DalamudApiLevel": 13,
+    "DalamudApiLevel": 14,
     "LoadPriority": 0,
     "IconUrl": "https://s3.puni.sh/media/plugin/24/icon-drb6aywk5m9.png"
 }
